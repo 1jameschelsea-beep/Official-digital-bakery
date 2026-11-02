@@ -1,0 +1,321 @@
+/* ---------------------- BASIC STYLES ----------------------------*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@font-face {
+    font-family: "Digital Clock";
+    src: url("../digital_clock_2/digital-clock.ttf") format("truetype");
+}
+
+html {
+    background-color: #f5fff2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+html.result-page {
+    background-color: #f8d8d2;
+}
+
+html.result-page body {
+    border-color: #c96f68;
+    box-shadow: 0 2px 6px #e8b6ae;
+}
+
+html.result-page .back a {
+    border-color: #c96f68;
+}
+
+html.result-page .back a:hover {
+    background-color: #f2c4b8;
+}
+
+body {
+    background-color: #fff8f1;
+    color: #51443b;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: center;
+    width: fit-content;
+    max-width: calc(100% - 64px);
+    margin: auto;
+    padding: 50px;
+    box-sizing: border-box;
+    border: 2px solid #8eae99;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px #e6d5bd;
+}
+
+h1 {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    margin-bottom: -5px;
+}
+
+
+#title {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.set-info {
+    width: 235px;
+}
+
+
+
+.box {
+    background-color: #f4eadb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #e6d5bd;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    font-family: "Digital Clock", sans-serif;
+    background-color: #f2d5a7;
+    color: #51443b;
+    margin: 8px auto;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+li:hover {
+    background-color: #cce3d5;
+    box-shadow: 0 2px 5px #e6d5bd;
+
+}
+
+li.selected {
+    background-color: #c8f2b8;
+    font-weight: 700;
+}
+
+.button,
+.back a {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 5px 10px;
+    border: 2px solid #8eae99;
+    border-radius: 5px;
+    color: #51443b;
+    cursor: pointer;
+    font-family: "Oswald", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+
+.button p,
+.back a {
+    margin: 0;
+    font-size: 18px;
+}
+
+.button:hover,
+.back a:hover {
+    background-color: #b8f2c6;
+}
+
+.back a {
+    margin-top: 60px;
+}
+
+
+
+/* ---------------------- LOADING BAR ----------------------------*/
+
+
+
+
+.loading-bar {
+    width: 33vw;
+    max-width: 400px;
+    height: 24px; 
+    position: absolute;
+    top: 70%;
+    left: 50%; 
+    transform: translate(-50%, -70%);
+    background-color: #b8f2dc;
+}
+
+.loading-bar::after {
+    content: " ";
+    display: block; 
+    width: 0; 
+    height: 100%; 
+    background-color: #416155;
+    animation: load 10s linear forwards;
+}
+
+@keyframes load {
+    0% { 
+        width: 0;
+    }
+
+    50% {
+        width: 50%; 
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.cookie-box {
+    width: min(60vw, 320px);
+    aspect-ratio: 1;
+    margin: 24px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    animation: cookie-fade-in 2s ease forwards;
+}
+
+.cookie-box.burnt {
+    background-image: url("../img/cookie-burnt.png");
+}
+
+.cookie-box.frozen {
+    background-image: url("../img/cookie-frozen.png");
+}
+
+.cookie-box.missing {
+    background-image: url("../img/cookie-missing.png");
+}
+
+.cookie-box.perfect {
+    background-image: url("../img/cookie-perfect.png");
+}
+
+.cookie-box.raw {
+    background-image: url("../img/cookie-raw.png");
+}
+
+@keyframes cookie-fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 900px) {
+    body {
+        padding: 36px 24px;
+    }
+
+    .wrapper {
+        gap: 40px;
+    }
+
+    .set-info {
+        width: 210px;
+    }
+
+    .box {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        width: calc(100% - 24px);
+        max-width: none;
+        padding: 24px 16px;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 32px;
+    }
+
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .set-info {
+        width: min(100%, 280px);
+    }
+
+    .button {
+        margin-top: 32px;
+    }
+
+    .loading-bar {
+        width: 70vw;
+        max-width: none;
+    }
+}
+
+.loading-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(500px, calc(100% - 32px));
+    max-width: none;
+    min-height: 160px;
+    margin: auto;
+    padding: 32px;
+}
+
+.loading-content {
+    width: 100%;
+}
+
+.loading-page .loading-bar {
+    position: static;
+    width: 100%;
+    max-width: 400px;
+    transform: none;
+}
+
+.loading-tip {
+    min-height: 1.5em;
+    margin: 20px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+@media (max-width: 600px) {
+    .loading-page {
+        margin: auto;
+    }
+
+    .loading-page .loading-bar {
+        width: 100%;
+        max-width: none;
+    }
+}
